@@ -1,0 +1,14 @@
+langgraph==0.2.61
+langchain-community==0.3.14
+langchain-experimental==0.3.4
+langchain-ollama==0.2.2
+triton==3.1.0
+beautifulsoup4==4.12.3
+requests==2.32.3
+PyYAML==6.0.2
+termcolor==2.5.0
+bitsandbytes==0.45.0
+transformers==4.47.1
+accelerate==1.2.1
+optimum
+fastapi==0.115.6
