@@ -154,11 +154,11 @@ def resume_analysis(candidate_skill:UserInfo, job_requirement_skill:JobDescripti
               prompt=matching_responsibility_prompt_template
           )
 
-    num_correct_answers = len([field for field in job_description_requirement if field.startswith("correct_answer_")])
+    num_correct_answers = len([field for field in job_requirement_skill if field.startswith("correct_answer_")])
     correct_answers = []
     for index in range(1, num_correct_answers + 1):
         correct_answer = qa_analysis(user_answer=candidate_skill[f"answer_{index}"],
-                                      correct_answer=job_description_requirement[f"correct_answer_{index}"],
+                                      correct_answer=job_requirement_skill[f"correct_answer_{index}"],
                                       qa_workflow=qa_workflow)
         correct_answers.append(correct_answer)
 
