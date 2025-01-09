@@ -1,5 +1,8 @@
 import json
 from .user_job_class import *
+from ranking_service.src.team_agents.skill_matching_agent.agents import *
+from ranking_service.src.team_agents.skill_matching_agent.prompts import *
+from ranking_service.src.team_agents.skill_matching_agent.json_guide import *
 
 def skill_analysis(candidate_skill:List, job_description_requirement:List, scoring_board, skill_workflow):
     dict_inputs={
@@ -229,7 +232,7 @@ def resume_analysis(candidate_skill:UserInfo, job_requirement_skill:JobDescripti
 
 def matching_array_resume(candidate_skills: List[UserInfo], job_requirement_skill: JobDescription, skill_requirement_score: SkillRequirementScore, weights, skill_workflow, qa_workflow):
     candidate_matching_responses = []
-    error_thresh = 5  # Set the number of retries
+    error_thresh = 3  # Set the number of retries
 
     for candidate_skill in candidate_skills:
         candidate_skill = candidate_skill.model_dump(exclude_unset=True)
