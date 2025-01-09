@@ -1,4 +1,5 @@
 import json
+# import logging
 from .user_job_class import *
 from ranking_service.src.team_agents.skill_matching_agent.agents import *
 from ranking_service.src.team_agents.skill_matching_agent.prompts import *
@@ -235,10 +236,13 @@ def resume_analysis(candidate_skill:UserInfo, job_requirement_skill:JobDescripti
     return ranking_score
 
 def matching_array_resume(candidate_skills: List[UserInfo], job_requirement_skill: JobDescription, skill_requirement_score: SkillRequirementScore, weights, skill_workflow, qa_workflow):
+    import time 
+    
     candidate_matching_responses = []
     error_thresh = 3  # Set the number of retries
 
     for candidate_skill in candidate_skills:
+        start = time.time()
         candidate_skill = candidate_skill.model_dump(exclude_unset=True)
         candidate_skill = json.dumps(candidate_skill)
         candidate_skill_dict = json.loads(candidate_skill)
@@ -255,5 +259,7 @@ def matching_array_resume(candidate_skills: List[UserInfo], job_requirement_skil
                     # You might want to add a delay here using time.sleep()
                 else:
                     print("Maximum retries reached. Skipping this candidate skill.")
-
+        print("-"*50)
+        print(f"Execution time: {time.time() - start} seconds")
+        print("-"*50)
     return candidate_matching_responses
