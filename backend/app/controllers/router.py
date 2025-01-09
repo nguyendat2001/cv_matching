@@ -14,6 +14,8 @@ from fastapi import FastAPI, Form, UploadFile
 from fastapi import APIRouter, UploadFile, File, HTTPException, status
 
 from ranking_service.src.rules import *
+from ranking_service.src.utils.util import check_for_content, get_current_utc_datetime
+from ranking_service.src.utils import *
 from ranking_service.src.utils import *
 from ranking_service.src.utils.excel_handling import *
 from ranking_service.src.team_agents.question_answer import *
@@ -67,7 +69,7 @@ async def matching_excell(file: UploadFile = File(...)):
         
         return {
             "message": "File uploaded and saved successfully.",
-            "file_path": file_path
+            "results": results
         }
 
     except Exception as e:
