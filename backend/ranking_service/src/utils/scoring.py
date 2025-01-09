@@ -1,5 +1,8 @@
 import json
 # import logging
+
+from langchain_core.messages import HumanMessage
+
 from .user_job_class import *
 from ranking_service.src.team_agents.skill_matching_agent.agents import *
 from ranking_service.src.team_agents.skill_matching_agent.prompts import *
