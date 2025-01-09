@@ -1,5 +1,6 @@
 from ranking_service.src.team_agents.common.agent import Agent
 from ranking_service.src.utils import *
+from termcolor import colored
 
 class FinalReportQAAgent(Agent):
     def invoke(self, tool_response=None, matcher_response=None):

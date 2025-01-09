@@ -1,6 +1,7 @@
 from ranking_service.src.team_agents.common.agent import Agent
 from ranking_service.src.team_agents.skill_matching_agent.prompts.matching_responsibility import *
 from ranking_service.src.utils import *
+from termcolor import colored
 
 class MatchingResponsibilityAgent(Agent):
     def invoke(self, candidate_responsibilities, job_responsibilities, prompt=matching_responsibility_prompt_template, feedback=None):
