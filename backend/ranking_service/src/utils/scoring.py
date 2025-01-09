@@ -4,6 +4,10 @@ from ranking_service.src.team_agents.skill_matching_agent.agents import *
 from ranking_service.src.team_agents.skill_matching_agent.prompts import *
 from ranking_service.src.team_agents.skill_matching_agent.json_guide import *
 
+server = 'ollama'
+model = 'llama3.1'
+model_endpoint = "http://localhost:11434/api/generate"
+
 def skill_analysis(candidate_skill:List, job_description_requirement:List, scoring_board, skill_workflow):
     dict_inputs={
         "user_component_skills":candidate_skill,
