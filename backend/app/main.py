@@ -5,8 +5,8 @@ import uvicorn
 
 from fastapi import FastAPI
 
-from app.controllers import router
-from app.middlewares import corsMiddlewares, staticMiddlewares
+from controllers import router
+from middlewares import corsMiddlewares, staticMiddlewares
 
 if not os.path.exists("static"):
     os.makedirs("static")
