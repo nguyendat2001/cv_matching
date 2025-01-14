@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+  mysql:
+    image: mysql:8.0 # Nâng cấp MySQL nếu có thể
+    environment:
+      MYSQL_DATABASE: 'laravel'
+      MYSQL_USER: 'mingnv'
+      MYSQL_PASSWORD: ''
+      MYSQL_ROOT_PASSWORD: ''
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app_network
+
+  backend_service:
+    container_name: fastapi-app
+    image: fastapi-app
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    # env_file:
+    #   - ./backend/.env.local
+    ports:
+      - 8000:8000 # Expose API ra ngoài host
+    restart: on-failure
+    volumes:
+      - ./backend/logs:/app/logs
+    depends_on:
+      - mysql
+    networks:
+      - app_network
+
+volumes:
+  db_data:
+
+networks:
+  app_network:
+    name: app_network
