@@ -73,9 +73,9 @@ def get_score(data):
     try:
         # Check if data is already a dictionary
         if data["scoring_with_board"] is not None:
-            return float(json.loads(data["scoring_with_board"])["assign_score_final"])
+            return "{:.2f}".format(float(json.loads(data["scoring_with_board"])["assign_score_final"]))
         else:  # If it's a JSON string, load it
-            return float(data["matcher_value_response"]["assign_score_final"])
+            return "{:.2f}".format(float(data["matcher_value_response"]["assign_score_final"]))
     except (KeyError, TypeError) as e:
         print(f"Warning: Could not find the required keys in the input data or encountered a TypeError: {e}")
         # Handle the error (e.g., return a default value, raise an exception)
